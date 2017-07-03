@@ -4,6 +4,12 @@
     <service name="GetInfo">
       <implementation-class>web.GetInfo</implementation-class>
     </service>
+    <service name="Logon">
+      <implementation-class>web.Logon</implementation-class>
+    </service>
+    <service name="CreateOrder">
+      <implementation-class>web.CreateOrder</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

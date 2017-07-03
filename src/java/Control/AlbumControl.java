@@ -33,7 +33,7 @@ public class AlbumControl {
 
     }
 
-    public AlbumControl() {
+    private AlbumControl() {
     }
 
     public static AlbumControl getInstance() {
