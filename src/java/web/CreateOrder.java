@@ -5,6 +5,10 @@
  */
 package web;
 
+import Handler.OrderHandler;
+import Model.AlbumToOrder;
+import Model.OrderLine;
+import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -15,12 +19,24 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "CreateOrder")
 public class CreateOrder {
+    private OrderHandler oh = OrderHandler.getInstance();
+
+
 
     /**
-     * This is a sample web service operation
+     * Web service operation
      */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    @WebMethod(operationName = "createNewOrder")
+    public String createNewOrder(@WebParam(name = "orderLine") OrderLine orderLine, @WebParam(name = "albumToOrder") Model.AlbumToOrder[] albumToOrder) {
+        OrderLine ol = orderLine;
+        ArrayList<AlbumToOrder> alList = new ArrayList<>();
+        for (int i = 0; i < albumToOrder.length; i++) {
+            AlbumToOrder albumToOrder1 = albumToOrder[i];
+            alList.add(albumToOrder1);
+        }
+        ol.setAlbumList(alList);
+        
+        return oh.createNewOrder(orderLine);
     }
+
 }
