@@ -7,6 +7,7 @@ package Handler;
 
 import Control.AlbumControl;
 import Model.Album;
+import Model.Lyric;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
@@ -40,6 +41,10 @@ public class AlbumHandler {
     
     public Album[] getAlbumContain(String contain){
         return ac.getAlbumcontain(contain);
+    }
+    
+    public Lyric[] getLyricToAlbum(int id){
+        return ac.getLyricToAlbum(id);
     }
     
 }

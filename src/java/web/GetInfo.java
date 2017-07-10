@@ -7,6 +7,7 @@ package web;
 
 import Handler.AlbumHandler;
 import Model.Album;
+import Model.Lyric;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +62,15 @@ public class GetInfo {
     @WebMethod(operationName = "getAlbumContain")
     public Album[] getAlbumContain(@WebParam(name = "contain") String contain) {
         return ah.getAlbumContain(contain);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getLyricToAlbum")
+    public Lyric[] getLyricToAlbum(@WebParam(name = "albumId") int albumId) {
+        //TODO write your implementation code here:
+        return ah.getLyricToAlbum(albumId);
     }
 
 
