@@ -6,6 +6,7 @@
 package web;
 
 import Handler.AlbumHandler;
+import MailService.SendMail;
 import Model.Album;
 import Model.Lyric;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
+import javax.mail.MessagingException;
 import javax.naming.NamingException;
 
 /**
@@ -71,6 +73,21 @@ public class GetInfo {
     public Lyric[] getLyricToAlbum(@WebParam(name = "albumId") int albumId) {
         //TODO write your implementation code here:
         return ah.getLyricToAlbum(albumId);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "sendMail")
+    public String sendMail(@WebParam(name = "Mailaddres") String Mailaddres) {
+        String response = "Mail sent to"+Mailaddres;
+        try{
+            SendMail mail = new SendMail(Mailaddres,"prøve");
+        } catch (MessagingException ex) {
+            response = "mail fail";
+            Logger.getLogger(GetInfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return response;
     }
 
 
