@@ -42,6 +42,8 @@ public class GetInfo {
 
     /**
      * Web service operation
+     * @param parameter
+     * @return 
      */
     @WebMethod(operationName = "getAlbumById")
     public Album getAlbumById(@WebParam(name = "parameter") int parameter) {
